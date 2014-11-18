@@ -26,13 +26,40 @@
       : <%%= pokemon.get(attr)%></span>
     <br>
     <%% } %>
+    
+  
   </div>  
 </script>
 
+  <!-- var $li = $('<li class="toy-list-item">');
+  $li.data('id', toy.get('id'));
+  $li.data('pokemon-id', toy.get('pokemon_id'));
+
+  var shortInfo = ['name', 'happiness', 'price']; -->
+  <!-- shortInfo.forEach(function (attr) {
+    $li.append(attr + ': ' + toy.get(attr) + '<br>');
+  });
+
+  var toylist = JST["toyListItem"]{toy: toy}
+
+  this.$pokeDetail.append(toylist);
+  this.$pokeDetail.find(".toys").append($li); -->
+
+
 <script type="text/template" id="toy-list-item-template">
+  <li class="toy-list-item" 
+      data-id="<%%= toy.get("id")%>"
+      data-pokemon-id="<%%= toy.get("pokemon_id")%>"
+      >
+  
+    <%% var shortInfo = ['name', 'happiness', 'price']; %>
+    <%% shortInfo.forEach(function (attr) { %>
+      <%%= attr %>: <%%= toy.get(attr) %>
+      <br>
+    <%% }) %>
+
+  </li>
 </script>
 
 <script type="text/template" id="toy-detail-template">
 </script>
-
-<%= "<div class='...'>"%>

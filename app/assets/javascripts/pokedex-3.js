@@ -3,7 +3,7 @@ Pokedex.RootView.prototype.reassignToy = function (event) {
 
   var pokemon = this.pokes.get($currentTarget.data("pokemon-id"));
   var toy = pokemon.toys().get($currentTarget.data("toy-id"));
-
+      
   toy.set("pokemon_id", $currentTarget.val());
   toy.save({}, {
     success: (function () {
@@ -15,7 +15,7 @@ Pokedex.RootView.prototype.reassignToy = function (event) {
 };
 
 Pokedex.RootView.prototype.renderToysList = function (toys) {
-  this.$pokeDetail.find(".toys").empty();
+  // this.$pokeDetail.find(".toys").empty();
   toys.each((function(toy) {
     this.addToyToList(toy);
   }).bind(this));
