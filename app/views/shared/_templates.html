@@ -47,19 +47,64 @@
 
 
 <script type="text/template" id="toy-list-item-template">
-  <li class="toy-list-item" 
-      data-id="<%%= toy.get("id")%>"
-      data-pokemon-id="<%%= toy.get("pokemon_id")%>"
-      >
+  <div class="toys">
+    <li class="toy-list-item" 
+        data-id="<%%= toy.get("id")%>"
+        data-pokemon-id="<%%= toy.get("pokemon_id")%>"
+        >
   
-    <%% var shortInfo = ['name', 'happiness', 'price']; %>
-    <%% shortInfo.forEach(function (attr) { %>
-      <%%= attr %>: <%%= toy.get(attr) %>
-      <br>
-    <%% }) %>
-
-  </li>
+      <%% var shortInfo = ['name', 'happiness', 'price']; %>
+      <%% shortInfo.forEach(function (attr) { %>
+        <%%= attr %>: <%%= toy.get(attr) %>
+        <br>
+      <%% }) %>
+    </li>
+  </div>
 </script>
 
+  <!-- // Phase III
+  var $pokemonSelect = $('<select>');
+  $pokemonSelect.data("pokemon-id", toy.get("pokemon_id"));
+  $pokemonSelect.data("toy-id", toy.id);
+  this.pokes.each(function (pokemon) {
+    var $pokemonOption = $('<option>');
+    $pokemonOption.attr("value", pokemon.id);
+    $pokemonOption.text(pokemon.get("name"));
+    if (pokemon.id == toy.get("pokemon_id")) {
+      $pokemonOption.prop("selected", true);
+    }
+    $pokemonSelect.append($pokemonOption);
+  });
+  $detail.append($pokemonSelect);
+
+  this.$toyDetail.html($detail); -->
+
 <script type="text/template" id="toy-detail-template">
+  <div class="detail">
+    <%%= "<img src='" + toy.escape('image_url') + "'></img>" %><br>
+    <%% for (var attr in toy.attributes) { %>
+    <span style="font-weight:bold;"><%%= attr %>
+      : <%%= toy.get(attr)%></span>
+    <br>
+    <%% } %>
+  </div>
+  
+<!--select assignment -->
+  <select  
+  data-toy-id="<%%= toy.get("id") %>"
+  data-pokemon-id="<%%= toy.get("pokemon_id")%>">
+  
+  <%% pokemon.each(function (mon) {%>
+    <option 
+    value="<%%= mon.get("id")  %>" 
+    text="<%%= mon.get("name")  %>"
+    <%% if(mon.get("id") === toy.get("pokemon_id")) {%>
+    selected="true"
+    <%% } %>>
+    <%%=mon.get("name")%>
+    </option>
+  <%% })%>
+
+    
+  </select>
 </script>
