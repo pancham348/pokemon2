@@ -44,7 +44,6 @@
   this.$pokeDetail.find(".toys").append($li); -->
 
 <script type="text/template" id="toy-list-item-template">
-  <div class="toys">
     <li class="toy-list-item" 
         data-id="<%%= toy.get("id")%>"
         data-pokemon-id="<%%= toy.get("pokemon_id")%>"
@@ -56,7 +55,6 @@
         <br>
       <%% }) %>
     </li>
-  </div>
 </script>
 
   <!-- // Phase III
@@ -98,6 +96,6 @@
       <%% } %>>
       <%%= mon.get("name") %>
     </option>
-  <%% }) %>
+  <%% }); %>
   </select>
 </script>
