@@ -96,6 +96,9 @@ window.Pokedex.RootView = function ($el) {
   this.$pokeDetail = this.$el.find('.pokemon-detail');
   this.$newPoke = this.$el.find('.new-pokemon');
   this.$toyDetail = this.$el.find('.toy-detail');
+  
+  //Phase V
+  
 
   // Click handlers go here.
   this.$pokeList.on(
@@ -112,8 +115,8 @@ window.Pokedex.RootView = function ($el) {
   );
 };
 
-$(function() {
-  var $rootEl = $('#pokedex');
-  window.Pokedex.rootView = new Pokedex.RootView($rootEl);
-  window.Pokedex.rootView.refreshPokemon();
-});
+// $(function() {
+//   var $rootEl = $('#pokedex');
+//   window.Pokedex.rootView = new Pokedex.RootView($rootEl);
+//   window.Pokedex.rootView.refreshPokemon();
+// });

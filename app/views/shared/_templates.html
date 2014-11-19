@@ -3,7 +3,7 @@
   <%% var shortInfo = ['name', 'poke_type'] %>
   <%% shortInfo.forEach(function (attr) { %>
     <span style="font-weight:bold;">
-       <%%=  attr %>: <%%= pokemon.get(attr)%>
+       <%%= attr %>: <%%= pokemon.get(attr) %>
     </span>
   <br>
   <%% }); %>
@@ -20,14 +20,12 @@
 
 <script type="text/template" id="pokemon-detail-template">
   <div class="detail">
-    <%%= "<img src='" + pokemon.escape('image_url') + "'></img>" %><br>
+    <img src="<%%= pokemon.escape('image_url') %>"></img><br>
     <%% for (var attr in pokemon.attributes) { %>
     <span style="font-weight:bold;"><%%= attr %>
       : <%%= pokemon.get(attr)%></span>
     <br>
     <%% } %>
-    
-  
   </div>  
 </script>
 
@@ -44,7 +42,6 @@
 
   this.$pokeDetail.append(toylist);
   this.$pokeDetail.find(".toys").append($li); -->
-
 
 <script type="text/template" id="toy-list-item-template">
   <div class="toys">
@@ -90,21 +87,17 @@
   </div>
   
 <!--select assignment -->
-  <select  
-  data-toy-id="<%%= toy.get("id") %>"
-  data-pokemon-id="<%%= toy.get("pokemon_id")%>">
+  <select data-toy-id="<%%= toy.get("id") %>"
+          data-pokemon-id="<%%= toy.get("pokemon_id")%>">
   
-  <%% pokemon.each(function (mon) {%>
-    <option 
-    value="<%%= mon.get("id")  %>" 
-    text="<%%= mon.get("name")  %>"
-    <%% if(mon.get("id") === toy.get("pokemon_id")) {%>
-    selected="true"
-    <%% } %>>
-    <%%=mon.get("name")%>
+  <%% pokemon.each(function (mon) { %>
+    <option value="<%%= mon.get("id") %>" 
+            text="<%%= mon.get("name") %>"
+      <%% if(mon.get("id") === toy.get("pokemon_id")) {%>
+        selected
+      <%% } %>>
+      <%%= mon.get("name") %>
     </option>
-  <%% })%>
-
-    
+  <%% }) %>
   </select>
 </script>
